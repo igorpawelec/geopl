@@ -217,7 +217,7 @@ head(sp[order(-sp$area_ha), ], 6)
 
 Compartments are not published as vectors at all – they exist only as a
 WMS picture.
-[`bdl_compartments()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+[`bdl_compartments()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
 derives them by dissolving subareas on the compartment field of the
 address, which is also self-consistent by construction:
 
@@ -271,7 +271,7 @@ unit’s contents overstates its area by 36%.
 
 Both readings are available on purpose. `bdl_subareas(aoi)` filters by
 geometry, because “what is on this ground” is a spatial question.
-[`bdl_by_address()`](https://igorpawelec.github.io/rgeopl/reference/bdl_by_address.md)
+[`bdl_by_address()`](https://igorpawelec.github.io/geopl/reference/bdl_by_address.md)
 filters by address, because “what belongs to this unit” is an
 administrative one. Pick the one that matches the question.
 
@@ -290,7 +290,7 @@ plot of chunk turnica-compartment
 The Forest Data Bank draws conservation areas on its maps and publishes
 none of them as data: its whole public service is seven layers of
 administrative units and subareas. The register belongs to GDOŚ, and
-[`protected_areas()`](https://igorpawelec.github.io/rgeopl/reference/protected_areas.md)
+[`protected_areas()`](https://igorpawelec.github.io/geopl/reference/protected_areas.md)
 goes there for it.
 
 ``` r

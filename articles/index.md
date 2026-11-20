@@ -3,12 +3,12 @@
 ### Guides
 
 - [Getting
-  started](https://igorpawelec.github.io/rgeopl/articles/getting-started.md):
+  started](https://igorpawelec.github.io/geopl/articles/getting-started.md):
 - [Rasters end to
-  end](https://igorpawelec.github.io/rgeopl/articles/raster-chain.md):
+  end](https://igorpawelec.github.io/geopl/articles/raster-chain.md):
 - [Heights, and the two systems Poland measures them
-  in](https://igorpawelec.github.io/rgeopl/articles/heights.md):
+  in](https://igorpawelec.github.io/geopl/articles/heights.md):
 - [Forest data: the BDL
-  side](https://igorpawelec.github.io/rgeopl/articles/forest-data.md):
+  side](https://igorpawelec.github.io/geopl/articles/forest-data.md):
 - [Case study: can I build a canopy height model
-  here?](https://igorpawelec.github.io/rgeopl/articles/case-study.md):
+  here?](https://igorpawelec.github.io/geopl/articles/case-study.md):

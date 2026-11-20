@@ -10,11 +10,11 @@ attribute, and caches both index responses and downloaded files on disk.
 
 Useful links:
 
-- <https://github.com/igorpawelec/rgeopl>
+- <https://github.com/igorpawelec/geopl>
 
-- <https://igorpawelec.github.io/rgeopl/>
+- <https://igorpawelec.github.io/geopl/>
 
-- Report bugs at <https://github.com/igorpawelec/rgeopl/issues>
+- Report bugs at <https://github.com/igorpawelec/geopl/issues>
 
 ## Author
 

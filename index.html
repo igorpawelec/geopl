@@ -21,7 +21,7 @@
 ">
 <meta property="og:description" content="Search and download spatial data from the Polish national geodetic resource (GUGiK / PZGiK) and the Forest Data Bank (BDL), selected by an area of interest, with server record limits handled and everything cached.
 ">
-<meta property="og:image" content="https://igorpawelec.github.io/rgeopl/logo.png">
+<meta property="og:image" content="https://igorpawelec.github.io/geopl/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -56,7 +56,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/igorpawelec/rgeopl/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/igorpawelec/geopl/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -78,7 +78,7 @@
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"igorpawelec/rgeopl"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"igorpawelec/geopl"</span><span class="op">)</span></span></code></pre></div>
 <p><code>terra</code> is needed for the raster verbs – <code><a href="reference/dem_get.html">dem_get()</a></code>, <code><a href="reference/dem_get.html">ortho_get()</a></code>, <code><a href="reference/chm_get.html">chm_get()</a></code>, <code><a href="reference/tile_mosaic.html">tile_mosaic()</a></code>, <code><a href="reference/open_raster.html">open_raster()</a></code> – and only for those; the index, forest and boundary functions work without it.</p>
 <p>Vignettes are not built by default. They are precompiled, so <code>build_vignettes = TRUE</code> needs pandoc but no network; if you would rather just read them, the rendered copies are in <a href="docs/"><code>docs/</code></a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -398,8 +398,8 @@ oapif_items()       bbox -&gt; pages by explicit offset (BDL collections)</code>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/igorpawelec/rgeopl/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/igorpawelec/rgeopl/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/igorpawelec/geopl/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/igorpawelec/geopl/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -429,8 +429,8 @@ oapif_items()       bbox -&gt; pages by explicit offset (BDL collections)</code>
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/igorpawelec/rgeopl/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/igorpawelec/rgeopl/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://github.com/igorpawelec/rgeopl/releases" class="external-link"><img src="https://img.shields.io/github/v/release/igorpawelec/rgeopl" alt="Release"></a></li>
+<li><a href="https://github.com/igorpawelec/geopl/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/igorpawelec/geopl/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/igorpawelec/geopl/releases" class="external-link"><img src="https://img.shields.io/github/v/release/igorpawelec/geopl" alt="Release"></a></li>
 <li><a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></li>
 </ul>
 </div>

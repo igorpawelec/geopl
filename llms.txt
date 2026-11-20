@@ -5,7 +5,7 @@ GUGiK (PZGiK / ISOK) and the Forest Data Bank (BDL) run by Lasy
 Panstwowe. One area of interest, one cache, one set of verbs.
 
 **Version 0.1.0.** Both the GUGiK and the Forest Data Bank sides are
-working; see [NEWS.md](https://igorpawelec.github.io/rgeopl/NEWS.md) for
+working; see [NEWS.md](https://igorpawelec.github.io/geopl/NEWS.md) for
 what is in it and for the service quirks that shaped it.
 
 ## Installation
@@ -13,22 +13,22 @@ what is in it and for the service quirks that shaped it.
 ``` r
 
 # install.packages("remotes")
-remotes::install_github("igorpawelec/rgeopl")
+remotes::install_github("igorpawelec/geopl")
 ```
 
 `terra` is needed for the raster verbs –
-[`dem_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md),
-[`ortho_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md),
-[`chm_get()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md),
-[`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md),
-[`open_raster()`](https://igorpawelec.github.io/rgeopl/reference/open_raster.md)
+[`dem_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md),
+[`ortho_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md),
+[`chm_get()`](https://igorpawelec.github.io/geopl/reference/chm_get.md),
+[`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md),
+[`open_raster()`](https://igorpawelec.github.io/geopl/reference/open_raster.md)
 – and only for those; the index, forest and boundary functions work
 without it.
 
 Vignettes are not built by default. They are precompiled, so
 `build_vignettes = TRUE` needs pandoc but no network; if you would
 rather just read them, the rendered copies are in
-[`docs/`](https://igorpawelec.github.io/rgeopl/docs/).
+[`docs/`](https://igorpawelec.github.io/geopl/docs/).
 
 ``` r
 
@@ -71,13 +71,13 @@ the numbers and figures in them are real rather than illustrative:
 
 |  |  |
 |----|----|
-| [Getting started](https://igorpawelec.github.io/rgeopl/docs/getting-started.md) | areas of interest, the indexes, coverage, downloading, the record limit |
-| [Forest data: the BDL side](https://igorpawelec.github.io/rgeopl/docs/forest-data.md) | the hierarchy, the forest address, lookups, national listings, and why an address is not a polygon |
-| [Case study](https://igorpawelec.github.io/rgeopl/docs/case-study.md) | Bircza and Metkow: deciding whether a canopy height model is possible at all |
+| [Getting started](https://igorpawelec.github.io/geopl/docs/getting-started.md) | areas of interest, the indexes, coverage, downloading, the record limit |
+| [Forest data: the BDL side](https://igorpawelec.github.io/geopl/docs/forest-data.md) | the hierarchy, the forest address, lookups, national listings, and why an address is not a polygon |
+| [Case study](https://igorpawelec.github.io/geopl/docs/case-study.md) | Bircza and Metkow: deciding whether a canopy height model is possible at all |
 
 The `docs/` copies are the ones to read on GitHub; the same content
 installs as
-[`vignette("getting-started")`](https://igorpawelec.github.io/rgeopl/articles/getting-started.md)
+[`vignette("getting-started")`](https://igorpawelec.github.io/geopl/articles/getting-started.md)
 and friends. Figures live in `docs/figures/` and `man/figures/`.
 
 To rebuild them (needs a connection, and a VPN endpoint in Poland for
@@ -132,12 +132,12 @@ function call. No code is shared.
 
 Two exported names exist in both packages and will mask each other if
 both are attached:
-[`ortho_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+[`ortho_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
 and
-[`tile_download()`](https://igorpawelec.github.io/rgeopl/reference/tile_download.md).
+[`tile_download()`](https://igorpawelec.github.io/geopl/reference/tile_download.md).
 Use `rgeopl::` to disambiguate. A third pair, `rgugik::DEM_request()`
 and
-[`rgeopl::dem_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md),
+[`rgeopl::dem_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md),
 differs only in case, so it does not mask – but it is easy to misread.
 
 ## What was measured
@@ -232,11 +232,11 @@ Two things that shape the client:
 
 - **No subarea compartments (`oddzialy`) as vectors.** They exist only
   in WMS.
-  [`bdl_compartments()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+  [`bdl_compartments()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   derives them by dissolving subareas on the compartment field of
   `adr_for`, which is also self-consistent by construction.
 - **No unit names on the subareas.** They carry codes only, so
-  [`bdl_subareas()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+  [`bdl_subareas()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   joins the directorate, inspectorate and range names from the small
   code tables, cached for a week.
 - **No archive, and no vintage field either.** The service returns the
@@ -278,11 +278,11 @@ Four rules the clients follow:
 
 R \>= 4.1, with `sf`, `httr2`, `jsonlite`, `rlang`, `cli` and `xml2`.
 `terra` is needed for the raster verbs –
-[`dem_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md),
-[`ortho_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md),
-[`chm_get()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md),
-[`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md),
-[`open_raster()`](https://igorpawelec.github.io/rgeopl/reference/open_raster.md)
+[`dem_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md),
+[`ortho_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md),
+[`chm_get()`](https://igorpawelec.github.io/geopl/reference/chm_get.md),
+[`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md),
+[`open_raster()`](https://igorpawelec.github.io/geopl/reference/open_raster.md)
 – and only for those.
 
 **The GUGiK services refuse connections from outside Poland.** BDL does
@@ -327,13 +327,13 @@ None of the above is legal advice.
 One representation of “where”, handed to each service in the form and
 the coordinate system it expects.
 
-- [`as_aoi()`](https://igorpawelec.github.io/rgeopl/reference/as_aoi.md)
-  [`is_aoi()`](https://igorpawelec.github.io/rgeopl/reference/as_aoi.md)
+- [`as_aoi()`](https://igorpawelec.github.io/geopl/reference/as_aoi.md)
+  [`is_aoi()`](https://igorpawelec.github.io/geopl/reference/as_aoi.md)
   : Define an area of interest
-- [`aoi_geom()`](https://igorpawelec.github.io/rgeopl/reference/aoi_geom.md)
-  [`aoi_bbox()`](https://igorpawelec.github.io/rgeopl/reference/aoi_geom.md)
+- [`aoi_geom()`](https://igorpawelec.github.io/geopl/reference/aoi_geom.md)
+  [`aoi_bbox()`](https://igorpawelec.github.io/geopl/reference/aoi_geom.md)
   : Geometry and bounding box of an area of interest
-- [`rgeopl_example()`](https://igorpawelec.github.io/rgeopl/reference/rgeopl_example.md)
+- [`rgeopl_example()`](https://igorpawelec.github.io/geopl/reference/rgeopl_example.md)
   : Example areas of interest shipped with the package
 
 ## What data exist here
@@ -341,22 +341,22 @@ the coordinate system it expects.
 The indexes, one row per tile: vintage, format, download link and the
 tile outline. Nothing is downloaded until you ask.
 
-- [`dem_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
-  [`pointcloud_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
-  [`ortho_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+- [`dem_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
+  [`pointcloud_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
+  [`ortho_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
   : What elevation, point cloud and orthophoto data exist for an area
-- [`coverage()`](https://igorpawelec.github.io/rgeopl/reference/coverage.md)
-  [`plot_coverage()`](https://igorpawelec.github.io/rgeopl/reference/coverage.md)
+- [`coverage()`](https://igorpawelec.github.io/geopl/reference/coverage.md)
+  [`plot_coverage()`](https://igorpawelec.github.io/geopl/reference/coverage.md)
   : Summarise and draw index coverage by vintage
-- [`tile_download()`](https://igorpawelec.github.io/rgeopl/reference/tile_download.md)
+- [`tile_download()`](https://igorpawelec.github.io/geopl/reference/tile_download.md)
   : Download the tiles an index points to
-- [`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md)
+- [`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md)
   : Join downloaded tiles into one raster
-- [`ortho_stack()`](https://igorpawelec.github.io/rgeopl/reference/ortho_stack.md)
+- [`ortho_stack()`](https://igorpawelec.github.io/geopl/reference/ortho_stack.md)
   : Orthophoto as one four-band raster
-- [`ortho_pairs()`](https://igorpawelec.github.io/rgeopl/reference/ortho_pairs.md)
+- [`ortho_pairs()`](https://igorpawelec.github.io/geopl/reference/ortho_pairs.md)
   : Which orthophoto vintages publish both products
-- [`pointcloud_get()`](https://igorpawelec.github.io/rgeopl/reference/pointcloud_get.md)
+- [`pointcloud_get()`](https://igorpawelec.github.io/geopl/reference/pointcloud_get.md)
   : Point cloud tiles, downloaded and identified
 
 ## Ready-made rasters
@@ -364,17 +364,17 @@ tile outline. Nothing is downloaded until you ask.
 The coverage services: the current model clipped to your area, with no
 tiles to mosaic. Point clouds are not available this way.
 
-- [`dem_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md)
-  [`ortho_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md)
+- [`dem_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md)
+  [`ortho_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md)
   : Download an elevation model or an orthophoto for an area
-- [`chm_get()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md)
-  [`chm_build()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md)
+- [`chm_get()`](https://igorpawelec.github.io/geopl/reference/chm_get.md)
+  [`chm_build()`](https://igorpawelec.github.io/geopl/reference/chm_get.md)
   : Canopy height for an area
-- [`chm_years()`](https://igorpawelec.github.io/rgeopl/reference/chm_years.md)
+- [`chm_years()`](https://igorpawelec.github.io/geopl/reference/chm_years.md)
   : Which vintages can make a canopy height model
-- [`dem_to_datum()`](https://igorpawelec.github.io/rgeopl/reference/dem_to_datum.md)
+- [`dem_to_datum()`](https://igorpawelec.github.io/geopl/reference/dem_to_datum.md)
   : Convert an elevation model between Poland's two height systems
-- [`open_raster()`](https://igorpawelec.github.io/rgeopl/reference/open_raster.md)
+- [`open_raster()`](https://igorpawelec.github.io/geopl/reference/open_raster.md)
   : Open a downloaded raster, with its coordinate system attached
 
 ## Forest units
@@ -382,21 +382,21 @@ tiles to mosaic. Point clouds are not available this way.
 The State Forests hierarchy, searchable by name or by forest address,
 and the stand subareas underneath it.
 
-- [`bdl_directorates()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
-  [`bdl_inspectorates()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
-  [`bdl_ranges()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
-  [`bdl_subareas()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
-  [`bdl_compartments()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+- [`bdl_directorates()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
+  [`bdl_inspectorates()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
+  [`bdl_ranges()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
+  [`bdl_subareas()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
+  [`bdl_compartments()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   : Forest administrative units and subareas
-- [`bdl_unit()`](https://igorpawelec.github.io/rgeopl/reference/bdl_unit.md)
+- [`bdl_unit()`](https://igorpawelec.github.io/geopl/reference/bdl_unit.md)
   : Find a forest unit by name
-- [`bdl_by_address()`](https://igorpawelec.github.io/rgeopl/reference/bdl_by_address.md)
+- [`bdl_by_address()`](https://igorpawelec.github.io/geopl/reference/bdl_by_address.md)
   : Find a forest unit by its address
-- [`bdl_catalogue()`](https://igorpawelec.github.io/rgeopl/reference/bdl_catalogue.md)
+- [`bdl_catalogue()`](https://igorpawelec.github.io/geopl/reference/bdl_catalogue.md)
   : List every forest unit in Poland
-- [`bdl_overview()`](https://igorpawelec.github.io/rgeopl/reference/bdl_overview.md)
+- [`bdl_overview()`](https://igorpawelec.github.io/geopl/reference/bdl_overview.md)
   : The State Forests at a glance
-- [`parse_forest_address()`](https://igorpawelec.github.io/rgeopl/reference/parse_forest_address.md)
+- [`parse_forest_address()`](https://igorpawelec.github.io/geopl/reference/parse_forest_address.md)
   : Split a forest address into its parts
 
 ## Protected areas
@@ -404,17 +404,17 @@ and the stand subareas underneath it.
 Nature conservation as the register holds it, from the body that keeps
 it: the Forest Data Bank publishes none of this.
 
-- [`protected_areas()`](https://igorpawelec.github.io/rgeopl/reference/protected_areas.md)
+- [`protected_areas()`](https://igorpawelec.github.io/geopl/reference/protected_areas.md)
   : Protected areas covering an area of interest
 
 ## Administrative boundaries
 
-- [`prg_boundaries()`](https://igorpawelec.github.io/rgeopl/reference/prg_boundaries.md)
+- [`prg_boundaries()`](https://igorpawelec.github.io/geopl/reference/prg_boundaries.md)
   : Administrative boundaries for an area
 
 ## Looking at what you got
 
-- [`plot_units()`](https://igorpawelec.github.io/rgeopl/reference/plot_units.md)
+- [`plot_units()`](https://igorpawelec.github.io/geopl/reference/plot_units.md)
   : Draw forest units, with context
 
 ## Cache
@@ -422,13 +422,13 @@ it: the Forest Data Bank publishes none of this.
 Index responses expire on their own; downloads are kept and recorded, so
 a tile already on disk is never fetched twice.
 
-- [`cache_dir()`](https://igorpawelec.github.io/rgeopl/reference/cache_dir.md)
-  [`cache_set_dir()`](https://igorpawelec.github.io/rgeopl/reference/cache_dir.md)
+- [`cache_dir()`](https://igorpawelec.github.io/geopl/reference/cache_dir.md)
+  [`cache_set_dir()`](https://igorpawelec.github.io/geopl/reference/cache_dir.md)
   : Cache location
-- [`cache_info()`](https://igorpawelec.github.io/rgeopl/reference/cache_info.md)
-  [`cache_clear()`](https://igorpawelec.github.io/rgeopl/reference/cache_info.md)
+- [`cache_info()`](https://igorpawelec.github.io/geopl/reference/cache_info.md)
+  [`cache_clear()`](https://igorpawelec.github.io/geopl/reference/cache_info.md)
   : Inspect and prune the download cache
-- [`rgeopl-options`](https://igorpawelec.github.io/rgeopl/reference/rgeopl-options.md)
+- [`rgeopl-options`](https://igorpawelec.github.io/geopl/reference/rgeopl-options.md)
   : Package options
 
 # Articles
@@ -436,12 +436,12 @@ a tile already on disk is never fetched twice.
 ### Guides
 
 - [Getting
-  started](https://igorpawelec.github.io/rgeopl/articles/getting-started.md):
+  started](https://igorpawelec.github.io/geopl/articles/getting-started.md):
 - [Rasters end to
-  end](https://igorpawelec.github.io/rgeopl/articles/raster-chain.md):
+  end](https://igorpawelec.github.io/geopl/articles/raster-chain.md):
 - [Heights, and the two systems Poland measures them
-  in](https://igorpawelec.github.io/rgeopl/articles/heights.md):
+  in](https://igorpawelec.github.io/geopl/articles/heights.md):
 - [Forest data: the BDL
-  side](https://igorpawelec.github.io/rgeopl/articles/forest-data.md):
+  side](https://igorpawelec.github.io/geopl/articles/forest-data.md):
 - [Case study: can I build a canopy height model
-  here?](https://igorpawelec.github.io/rgeopl/articles/case-study.md):
+  here?](https://igorpawelec.github.io/geopl/articles/case-study.md):

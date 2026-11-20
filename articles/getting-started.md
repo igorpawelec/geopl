@@ -11,7 +11,7 @@ library(rgeopl)
 
 ## An area of interest
 
-[`as_aoi()`](https://igorpawelec.github.io/rgeopl/reference/as_aoi.md)
+[`as_aoi()`](https://igorpawelec.github.io/geopl/reference/as_aoi.md)
 takes whatever you already have. A point and a radius:
 
 ``` r
@@ -221,7 +221,7 @@ table(dem$year, dem$VRS)
 ```
 
 Heights are not comparable across that boundary.
-[`tile_download()`](https://igorpawelec.github.io/rgeopl/reference/tile_download.md)
+[`tile_download()`](https://igorpawelec.github.io/geopl/reference/tile_download.md)
 warns when a selection mixes the two. It does not bite a canopy height
 model – surface minus terrain within one year cancels the datum – but it
 does bite any direct comparison of two terrain models.
@@ -250,9 +250,9 @@ The index is an ordinary `sf` data frame. Filter it however you like –
 base R, `dplyr`,
 [`sf::st_filter()`](https://r-spatial.github.io/sf/reference/st_join.html)
 – and pass what survives to
-[`tile_download()`](https://igorpawelec.github.io/rgeopl/reference/tile_download.md).
+[`tile_download()`](https://igorpawelec.github.io/geopl/reference/tile_download.md).
 The class does not have to survive the pipeline;
-[`tile_download()`](https://igorpawelec.github.io/rgeopl/reference/tile_download.md)
+[`tile_download()`](https://igorpawelec.github.io/geopl/reference/tile_download.md)
 only needs the `URL` and `filename` columns.
 
 ``` r
@@ -306,6 +306,6 @@ abroad needs a VPN endpoint in Poland, and the error message says so
 when a request fails against those hosts.
 
 The forest side is covered in
-[`vignette("forest-data")`](https://igorpawelec.github.io/rgeopl/articles/forest-data.md),
+[`vignette("forest-data")`](https://igorpawelec.github.io/geopl/articles/forest-data.md),
 and the two are put together in
-[`vignette("case-study")`](https://igorpawelec.github.io/rgeopl/articles/case-study.md).
+[`vignette("case-study")`](https://igorpawelec.github.io/geopl/articles/case-study.md).

@@ -7,16 +7,16 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/igorpawelec/rgeopl/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/igorpawelec/geopl/blob/main/DESCRIPTION)
 
 Pawelec I (2026). *rgeopl: Unified Access to Polish National Geodata
 (GUGiK and BDL)*. R package version 0.10.0,
-<https://github.com/igorpawelec/rgeopl>.
+<https://github.com/igorpawelec/geopl>.
 
     @Manual{,
       title = {rgeopl: Unified Access to Polish National Geodata (GUGiK and BDL)},
       author = {Igor Pawelec},
       year = {2026},
       note = {R package version 0.10.0},
-      url = {https://github.com/igorpawelec/rgeopl},
+      url = {https://github.com/igorpawelec/geopl},
     }

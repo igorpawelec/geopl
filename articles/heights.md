@@ -82,7 +82,7 @@ p[, c("accuracy", "instantiable")]
 The one it can instantiate is `+proj=noop`. It does nothing: the heights
 come back unchanged and relabelled, which is worse than an error,
 because nothing about the result looks wrong.
-[`dem_to_datum()`](https://igorpawelec.github.io/rgeopl/reference/dem_to_datum.md)
+[`dem_to_datum()`](https://igorpawelec.github.io/geopl/reference/dem_to_datum.md)
 goes up to the ellipsoid through one quasi-geoid model and back down
 through the other instead, and refuses rather than guessing if the grids
 cannot be reached, if the area lies outside them, or if the computed
@@ -122,7 +122,7 @@ the change of datum. Subtract them as they come and every canopy is
 about 16 cm too short, uniformly, on top of the real growth between the
 flights.
 
-[`chm_years()`](https://igorpawelec.github.io/rgeopl/reference/chm_years.md)
+[`chm_years()`](https://igorpawelec.github.io/geopl/reference/chm_years.md)
 avoids the question by only offering vintages that hold both:
 
 ``` r
@@ -134,7 +134,7 @@ chm_years(bialowieza, quiet = TRUE)
 ```
 
 When you are assembling the two halves yourself,
-[`chm_build()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md)
+[`chm_build()`](https://igorpawelec.github.io/geopl/reference/chm_get.md)
 takes their systems and converts before subtracting:
 
 ``` r
@@ -147,7 +147,7 @@ them. The index knows; you have to pass it on.
 
 ## Joining terrain across the boundary
 
-[`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md)
+[`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md)
 refuses a selection that mixes vertical datums, because the seam would
 be a step in the ground that is not there. It is the one refusal with a
 way through: name the system you want to land in and it converts one

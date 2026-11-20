@@ -5,7 +5,7 @@ GUGiK (PZGiK / ISOK) and the Forest Data Bank (BDL) run by Lasy
 Panstwowe. One area of interest, one cache, one set of verbs.
 
 **Version 0.1.0.** Both the GUGiK and the Forest Data Bank sides are
-working; see [NEWS.md](https://igorpawelec.github.io/rgeopl/NEWS.md) for
+working; see [NEWS.md](https://igorpawelec.github.io/geopl/NEWS.md) for
 what is in it and for the service quirks that shaped it.
 
 ## Installation
@@ -13,22 +13,22 @@ what is in it and for the service quirks that shaped it.
 ``` r
 
 # install.packages("remotes")
-remotes::install_github("igorpawelec/rgeopl")
+remotes::install_github("igorpawelec/geopl")
 ```
 
 `terra` is needed for the raster verbs –
-[`dem_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md),
-[`ortho_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md),
-[`chm_get()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md),
-[`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md),
-[`open_raster()`](https://igorpawelec.github.io/rgeopl/reference/open_raster.md)
+[`dem_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md),
+[`ortho_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md),
+[`chm_get()`](https://igorpawelec.github.io/geopl/reference/chm_get.md),
+[`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md),
+[`open_raster()`](https://igorpawelec.github.io/geopl/reference/open_raster.md)
 – and only for those; the index, forest and boundary functions work
 without it.
 
 Vignettes are not built by default. They are precompiled, so
 `build_vignettes = TRUE` needs pandoc but no network; if you would
 rather just read them, the rendered copies are in
-[`docs/`](https://igorpawelec.github.io/rgeopl/docs/).
+[`docs/`](https://igorpawelec.github.io/geopl/docs/).
 
 ``` r
 
@@ -71,13 +71,13 @@ the numbers and figures in them are real rather than illustrative:
 
 |  |  |
 |----|----|
-| [Getting started](https://igorpawelec.github.io/rgeopl/docs/getting-started.md) | areas of interest, the indexes, coverage, downloading, the record limit |
-| [Forest data: the BDL side](https://igorpawelec.github.io/rgeopl/docs/forest-data.md) | the hierarchy, the forest address, lookups, national listings, and why an address is not a polygon |
-| [Case study](https://igorpawelec.github.io/rgeopl/docs/case-study.md) | Bircza and Metkow: deciding whether a canopy height model is possible at all |
+| [Getting started](https://igorpawelec.github.io/geopl/docs/getting-started.md) | areas of interest, the indexes, coverage, downloading, the record limit |
+| [Forest data: the BDL side](https://igorpawelec.github.io/geopl/docs/forest-data.md) | the hierarchy, the forest address, lookups, national listings, and why an address is not a polygon |
+| [Case study](https://igorpawelec.github.io/geopl/docs/case-study.md) | Bircza and Metkow: deciding whether a canopy height model is possible at all |
 
 The `docs/` copies are the ones to read on GitHub; the same content
 installs as
-[`vignette("getting-started")`](https://igorpawelec.github.io/rgeopl/articles/getting-started.md)
+[`vignette("getting-started")`](https://igorpawelec.github.io/geopl/articles/getting-started.md)
 and friends. Figures live in `docs/figures/` and `man/figures/`.
 
 To rebuild them (needs a connection, and a VPN endpoint in Poland for
@@ -132,12 +132,12 @@ function call. No code is shared.
 
 Two exported names exist in both packages and will mask each other if
 both are attached:
-[`ortho_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+[`ortho_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
 and
-[`tile_download()`](https://igorpawelec.github.io/rgeopl/reference/tile_download.md).
+[`tile_download()`](https://igorpawelec.github.io/geopl/reference/tile_download.md).
 Use `rgeopl::` to disambiguate. A third pair, `rgugik::DEM_request()`
 and
-[`rgeopl::dem_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md),
+[`rgeopl::dem_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md),
 differs only in case, so it does not mask – but it is easy to misread.
 
 ## What was measured
@@ -232,11 +232,11 @@ Two things that shape the client:
 
 - **No subarea compartments (`oddzialy`) as vectors.** They exist only
   in WMS.
-  [`bdl_compartments()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+  [`bdl_compartments()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   derives them by dissolving subareas on the compartment field of
   `adr_for`, which is also self-consistent by construction.
 - **No unit names on the subareas.** They carry codes only, so
-  [`bdl_subareas()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+  [`bdl_subareas()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   joins the directorate, inspectorate and range names from the small
   code tables, cached for a week.
 - **No archive, and no vintage field either.** The service returns the
@@ -278,11 +278,11 @@ Four rules the clients follow:
 
 R \>= 4.1, with `sf`, `httr2`, `jsonlite`, `rlang`, `cli` and `xml2`.
 `terra` is needed for the raster verbs –
-[`dem_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md),
-[`ortho_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md),
-[`chm_get()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md),
-[`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md),
-[`open_raster()`](https://igorpawelec.github.io/rgeopl/reference/open_raster.md)
+[`dem_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md),
+[`ortho_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md),
+[`chm_get()`](https://igorpawelec.github.io/geopl/reference/chm_get.md),
+[`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md),
+[`open_raster()`](https://igorpawelec.github.io/geopl/reference/open_raster.md)
 – and only for those.
 
 **The GUGiK services refuse connections from outside Poland.** BDL does

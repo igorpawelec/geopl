@@ -2,7 +2,7 @@
 
 ## rgeopl 0.10.0
 
-- [`bdl_ranges()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+- [`bdl_ranges()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   and the other BDL collection walkers no longer fail with “numbers of
   columns of arguments do not match” when one page comes back a column
   short. A property absent from every feature on a page is absent from
@@ -11,10 +11,10 @@
   aligned on the union of their columns, the missing ones filled with
   `NA`, before binding – the treatment the GDOŚ registers already had,
   now shared.
-- [`bdl_directorates()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md),
-  [`bdl_inspectorates()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+- [`bdl_directorates()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md),
+  [`bdl_inspectorates()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   and
-  [`bdl_ranges()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+  [`bdl_ranges()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   take `geometry = FALSE`, which asks the service to leave the polygons
   out and hands back the attributes as a plain data frame. These
   outlines are large, and larger the further up the hierarchy you go –
@@ -29,20 +29,20 @@
   features. A page of 5000 features is 26 MB of subareas and 475 MB of
   forest ranges, and the gateway answers the second with an intermittent
   502 instead of the data – which is what
-  [`bdl_ranges()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+  [`bdl_ranges()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   without an area had been running into. One feature is fetched to
   measure, and the page is sized to a 32 MB budget and capped at the
   previous 5000. The subarea collections are unaffected; the
   administrative levels now walk in pages of 13 to 249.
-- [`bdl_subareas()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md),
-  [`bdl_by_address()`](https://igorpawelec.github.io/rgeopl/reference/bdl_by_address.md)
+- [`bdl_subareas()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md),
+  [`bdl_by_address()`](https://igorpawelec.github.io/geopl/reference/bdl_by_address.md)
   and the unit lookups bind their parts the way the collection pages
   already did. Each of them fetches features separately – one request
   per unit, or one collection per regional directorate – and any part
   can arrive without a property that nothing in it carries, which plain
   `rbind` refuses. The same failure as above, at three call sites that
   had not happened to meet it yet.
-- [`bdl_ranges()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+- [`bdl_ranges()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   records that a unit lying in separate pieces is published as one
   feature per piece: 5259 features for 5255 forest addresses, Szkolka
   Grabowiec in three and Rudnica and Lawki in two apiece. Counting rows
@@ -50,7 +50,7 @@
 
 ## rgeopl 0.9.0
 
-- [`bdl_inspectorates()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+- [`bdl_inspectorates()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   no longer returns the same codes twice. The `nadlesnictwa` collection
   sends its own `region_cd` and `inspectorate_cd`, which the forest
   address already carries, and binding both left `inspectorate_cd.1` and
@@ -84,9 +84,9 @@
 - `narrow_type()` no longer stops on a raster that holds no values; it
   gives up quietly instead, which is what the caller expects of it.
 
-- [`dem_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md)
+- [`dem_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md)
   and
-  [`ortho_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md)
+  [`ortho_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md)
   take `gdal`, like every other function here that writes a file. They
   were the only two that wrote one without letting you say how.
 
@@ -99,11 +99,11 @@
   two systems Poland measures them in* is about the vertical datums.
   Between them they reach the functions that do the work: 22 of the 39
   exported ones appeared in no vignette at all, including
-  [`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md),
-  [`chm_get()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md)
+  [`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md),
+  [`chm_get()`](https://igorpawelec.github.io/geopl/reference/chm_get.md)
   and
-  [`ortho_stack()`](https://igorpawelec.github.io/rgeopl/reference/ortho_stack.md).
-- [`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md)
+  [`ortho_stack()`](https://igorpawelec.github.io/geopl/reference/ortho_stack.md).
+- [`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md)
   takes a `datum`. Mixing vertical systems is refused, because the seam
   would be a step in the ground that is not there – but it is the one
   refusal with a way through: named a system to land in, it mosaics each
@@ -111,7 +111,7 @@
   with the target laid down first. Naming a datum also accepts the
   mixture of vintages that comes with it, since two vertical systems are
   two flights and there is no way to have one without the other.
-- [`chm_build()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md)
+- [`chm_build()`](https://igorpawelec.github.io/geopl/reference/chm_get.md)
   takes `vrs`, the vertical systems of the two rasters, and converts
   before subtracting when they differ. Rasters carry no vertical system,
   so it cannot be worked out from them – and the trap is ordinary:
@@ -128,7 +128,7 @@
 - The functions people actually type are tested against recorded
   answers. Everything else in the suite is offline with the answers made
   up, which left the entry points uncovered – when `format` was added to
-  [`dem_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+  [`dem_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
   and every later argument shifted one place, nothing noticed. Ten of
   them now replay real responses through `httptest2`. The recordings
   stay in the repository rather than the built package: these services
@@ -137,7 +137,7 @@
 
 ## rgeopl 0.6.0
 
-- [`protected_areas()`](https://igorpawelec.github.io/rgeopl/reference/protected_areas.md)
+- [`protected_areas()`](https://igorpawelec.github.io/geopl/reference/protected_areas.md)
   answers the question a stand outline raises immediately: whether
   anything protected lies under it. Natura 2000 under both directives,
   reserves, national and landscape parks, protected landscape areas,
@@ -154,7 +154,7 @@
   `urn:ogc:def:crs:EPSG::2180` means northing first – and mismatching
   them returns an empty answer for an area full of reserves, with no
   error. That also explains
-  [`prg_boundaries()`](https://igorpawelec.github.io/rgeopl/reference/prg_boundaries.md),
+  [`prg_boundaries()`](https://igorpawelec.github.io/geopl/reference/prg_boundaries.md),
   which uses the urn spelling and reverses its bounding box: not a quirk
   of PRG but the rule. And the service cannot page at all: `STARTINDEX`
   answers `Cannot do natural order without a primary key`, so each
@@ -164,13 +164,13 @@
   A park and its buffer zone are separate features under the same name:
   `ParkiNarodowe` returns 46 rows for Poland’s 23 national parks,
   exactly 23 of them buffer zones.
-  [`?protected_areas`](https://igorpawelec.github.io/rgeopl/reference/protected_areas.md)
+  [`?protected_areas`](https://igorpawelec.github.io/geopl/reference/protected_areas.md)
   says so, because summing areas without looking counts the same ground
   twice.
 
 ## rgeopl 0.5.0
 
-- [`dem_to_datum()`](https://igorpawelec.github.io/rgeopl/reference/dem_to_datum.md)
+- [`dem_to_datum()`](https://igorpawelec.github.io/geopl/reference/dem_to_datum.md)
   converts an elevation model between Poland’s two height systems.
   Measured over the country, an EVRF2007 height is 13.6 to 19.2 cm above
   the KRON86 height of the same ground, so comparing terrain across the
@@ -205,12 +205,12 @@
   blanket setting would have done to every orthophoto – so it follows
   the data type, which also fixes the masking path quietly using the
   integer predictor on elevation models.
-  [`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md),
-  [`chm_get()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md),
-  [`chm_build()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md),
-  [`ortho_stack()`](https://igorpawelec.github.io/rgeopl/reference/ortho_stack.md)
+  [`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md),
+  [`chm_get()`](https://igorpawelec.github.io/geopl/reference/chm_get.md),
+  [`chm_build()`](https://igorpawelec.github.io/geopl/reference/chm_get.md),
+  [`ortho_stack()`](https://igorpawelec.github.io/geopl/reference/ortho_stack.md)
   and
-  [`dem_to_datum()`](https://igorpawelec.github.io/rgeopl/reference/dem_to_datum.md)
+  [`dem_to_datum()`](https://igorpawelec.github.io/geopl/reference/dem_to_datum.md)
   take `gdal` to replace all of that when you want something else, a
   Cloud Optimized GeoTIFF for instance.
 
@@ -221,7 +221,7 @@
   mosaic says `DTM` and a three-band orthophoto says `R, G, B` or
   `NIR, R, G` by its composition.
 
-- [`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md)
+- [`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md)
   refuses a selection the virtual raster could only join in part.
   [`terra::vrt()`](https://rspatial.github.io/terra/reference/vrt.html)
   leaves out a file it cannot fit and reports it in a warning that
@@ -232,12 +232,12 @@
   as distinct names, since a multi-band file is listed once per band –
   and anything missing is an error rather than a warning.
 
-- [`cache_clear()`](https://igorpawelec.github.io/rgeopl/reference/cache_info.md)
+- [`cache_clear()`](https://igorpawelec.github.io/geopl/reference/cache_info.md)
   no longer forgets files it could not delete. It rewrote the manifest
   whether or not the removal succeeded, so a file still held open –
   which on Windows a `SpatRaster` in the session is enough to do –
   stayed on disk while the manifest dropped its row.
-  [`cache_info()`](https://igorpawelec.github.io/rgeopl/reference/cache_info.md)
+  [`cache_info()`](https://igorpawelec.github.io/geopl/reference/cache_info.md)
   then reported an empty cache with a file sitting in it, and nothing
   would ever clean it up or reuse it. Only rows whose file has actually
   gone are dropped now, and what resisted is named in a warning.
@@ -257,9 +257,9 @@
   `argument must be coercible to non-negative integer`. Some services
   really do omit it – the GDOS one does.
 
-- [`dem_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md)
+- [`dem_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md)
   and
-  [`ortho_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md)
+  [`ortho_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md)
   write to `filename`, which is what every other function in the package
   calls that argument. `file` keeps working and says it has been
   renamed; it will go in a later release. Positional calls are
@@ -268,14 +268,14 @@
 - Tests reach the functions people actually type. Fourteen of the
   exported functions had no test calling them at all, which is
   unavoidable for the ones that need the network but was not for
-  [`is_aoi()`](https://igorpawelec.github.io/rgeopl/reference/as_aoi.md),
-  [`aoi_geom()`](https://igorpawelec.github.io/rgeopl/reference/aoi_geom.md),
-  [`cache_info()`](https://igorpawelec.github.io/rgeopl/reference/cache_info.md),
-  [`cache_set_dir()`](https://igorpawelec.github.io/rgeopl/reference/cache_dir.md)
+  [`is_aoi()`](https://igorpawelec.github.io/geopl/reference/as_aoi.md),
+  [`aoi_geom()`](https://igorpawelec.github.io/geopl/reference/aoi_geom.md),
+  [`cache_info()`](https://igorpawelec.github.io/geopl/reference/cache_info.md),
+  [`cache_set_dir()`](https://igorpawelec.github.io/geopl/reference/cache_dir.md)
   and
-  [`plot_units()`](https://igorpawelec.github.io/rgeopl/reference/plot_units.md).
+  [`plot_units()`](https://igorpawelec.github.io/geopl/reference/plot_units.md).
   When `format` was added to
-  [`dem_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+  [`dem_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
   and every later argument shifted one place, nothing in the suite
   noticed.
 
@@ -284,16 +284,16 @@
   hand, and it was the only reason for that dependency.
 
 - The help page shared by
-  [`dem_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md),
-  [`pointcloud_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+  [`dem_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md),
+  [`pointcloud_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
   and
-  [`ortho_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+  [`ortho_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
   now says that the last of them takes no `format`: its index has no
   such column, because orthophoto sheets are published one way.
 
 ## rgeopl 0.4.0
 
-- [`pointcloud_get()`](https://igorpawelec.github.io/rgeopl/reference/pointcloud_get.md)
+- [`pointcloud_get()`](https://igorpawelec.github.io/geopl/reference/pointcloud_get.md)
   carries the point cloud chain as far as it can go without leaving CRAN
   behind: it downloads what an index points at, checks the selection is
   one survey, and returns the files with the coordinate system the
@@ -312,22 +312,22 @@
   [`requireNamespace()`](https://rdrr.io/r/base/ns-load.html) without
   declaring it raises a check WARNING. All three measured, the last one
   on four platforms at once.
-  [`?pointcloud_get`](https://igorpawelec.github.io/rgeopl/reference/pointcloud_get.md)
+  [`?pointcloud_get`](https://igorpawelec.github.io/geopl/reference/pointcloud_get.md)
   gives the line to write, and where `lidR` still installs from.
 
-- [`chm_get()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md)
+- [`chm_get()`](https://igorpawelec.github.io/geopl/reference/chm_get.md)
   takes a `year`. Without one it uses the coverage services as before,
   which publish the current model and nothing else; with one it
   assembles the model from archive tiles, which is the only route to an
   earlier flight and the route people were walking by hand.
-  [`chm_years()`](https://igorpawelec.github.io/rgeopl/reference/chm_years.md)
+  [`chm_years()`](https://igorpawelec.github.io/geopl/reference/chm_years.md)
   lists the vintages an area can make a canopy model from at all – not
   many can, because the terrain has been remapped far more often than
   the surface.
 
-- [`dem_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+- [`dem_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
   and
-  [`pointcloud_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+  [`pointcloud_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
   take a `format`. The service publishes one map sheet in several forms
   at once – measured across three distant areas, 178 of 1028
   sheet/product/vintage combinations come in more than one, and some in
@@ -355,7 +355,7 @@
   first, which is what the parallel path already did. A point cloud tile
   no longer costs its own size in RAM before it reaches the cache.
 
-- [`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md)
+- [`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md)
   refuses a selection that mixes file formats, and says so. Every
   elevation sheet is published twice under one sheet number, as a grid
   and as a list of points; picking both was previously reported as a
@@ -367,10 +367,10 @@
   pointing at the same file resolved to the same target path, so both
   transfers wrote to one temporary file and raced each other. Every row
   still gets its path back; only the transfer is shared.
-- [`ortho_stack()`](https://igorpawelec.github.io/rgeopl/reference/ortho_stack.md)
+- [`ortho_stack()`](https://igorpawelec.github.io/geopl/reference/ortho_stack.md)
   joins the CIR and RGB products of one flight into a single four-band
   raster: near-infrared, red, green, blue.
-  [`ortho_pairs()`](https://igorpawelec.github.io/rgeopl/reference/ortho_pairs.md)
+  [`ortho_pairs()`](https://igorpawelec.github.io/geopl/reference/ortho_pairs.md)
   lists the vintages that publish both, which is the question it raises.
   Measured before building it, on one sheet at 0.25 m: CIR’s red and
   green correlate with RGB’s at **0.999**, and its first band with
@@ -379,20 +379,20 @@
   band RGB actually contributes. A vegetation index therefore wants
   `bands = "cir"`, which halves the download: infrared and red already
   sit in one file, consistent with each other.
-- [`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md)
+- [`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md)
   gains `max_active`, so a stack can pass its connection limit down to
   the downloads.
 - `mask` now works on the coverage side too:
-  [`dem_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md),
-  [`ortho_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md)
+  [`dem_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md),
+  [`ortho_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md)
   and
-  [`chm_get()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md)
+  [`chm_get()`](https://igorpawelec.github.io/geopl/reference/chm_get.md)
   take it, and
-  [`chm_build()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md)
+  [`chm_build()`](https://igorpawelec.github.io/geopl/reference/chm_get.md)
   takes an `aoi` to go with it. The coverage services are addressed by a
   bounding box, so until now a ragged stand came back through this path
   with its corners filled in while the same request through
-  [`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md)
+  [`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md)
   came back cut to the outline. One word should not mean two things
   depending on which way the data was fetched.
 
@@ -406,10 +406,10 @@ country. The bounding box drawn around 40 plots of 500 m radius covers
 it with 1 410 846 records – 936 times what the plots needed, assembled
 over tens of minutes and then thrown away.
 
-- [`dem_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md),
-  [`ortho_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+- [`dem_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md),
+  [`ortho_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
   and
-  [`pointcloud_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+  [`pointcloud_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
   gain `by_feature`. Scattered areas are now asked about one feature at
   a time and the answers merged, with duplicate map sheets dropped. The
   default, `NULL`, decides by comparing the box around everything with
@@ -440,27 +440,27 @@ everything cached.
 
 ### Areas of interest
 
-- [`as_aoi()`](https://igorpawelec.github.io/rgeopl/reference/as_aoi.md)
+- [`as_aoi()`](https://igorpawelec.github.io/geopl/reference/as_aoi.md)
   takes an `sf`, `sfc` or `sfg` object, an `sf` bounding box, a `terra`
   `SpatVector`, `SpatRaster` or `SpatExtent`, a point or bounding box as
   bare numbers, a coordinate matrix, a file path, or WKT. For bare
   numbers the CRS is inferred from the coordinate range – Poland’s
   longitude/latitude window and the PL-1992 window do not overlap – or
   the call fails rather than guessing.
-- [`aoi_bbox()`](https://igorpawelec.github.io/rgeopl/reference/aoi_geom.md)
+- [`aoi_bbox()`](https://igorpawelec.github.io/geopl/reference/aoi_geom.md)
   and
-  [`aoi_geom()`](https://igorpawelec.github.io/rgeopl/reference/aoi_geom.md)
+  [`aoi_geom()`](https://igorpawelec.github.io/geopl/reference/aoi_geom.md)
   hand it on in whichever CRS a service needs.
-- [`rgeopl_example()`](https://igorpawelec.github.io/rgeopl/reference/rgeopl_example.md)
+- [`rgeopl_example()`](https://igorpawelec.github.io/geopl/reference/rgeopl_example.md)
   ships two real areas to experiment on: a point in a pine stand in
   Warmia, and a 600 ha survey area near Gniezno.
 
 ### What data exist: the GUGiK indexes
 
-- [`dem_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md),
-  [`ortho_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+- [`dem_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md),
+  [`ortho_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
   and
-  [`pointcloud_request()`](https://igorpawelec.github.io/rgeopl/reference/dem_request.md)
+  [`pointcloud_request()`](https://igorpawelec.github.io/geopl/reference/dem_request.md)
   return one row per tile, with vintage, format, download link and the
   tile outline as geometry. Column names follow `rgugik`, so existing
   scripts port with a rename of the function call.
@@ -469,57 +469,57 @@ everything cached.
   are assembled by object id. A 40 x 40 km area returns 19 766 records
   in 20 requests, and a short result raises rather than passing as
   complete.
-- [`coverage()`](https://igorpawelec.github.io/rgeopl/reference/coverage.md)
+- [`coverage()`](https://igorpawelec.github.io/geopl/reference/coverage.md)
   reports how much of the area each vintage actually covers, and
-  [`plot_coverage()`](https://igorpawelec.github.io/rgeopl/reference/coverage.md)
+  [`plot_coverage()`](https://igorpawelec.github.io/geopl/reference/coverage.md)
   draws it as small multiples, one panel per vintage.
-- [`tile_download()`](https://igorpawelec.github.io/rgeopl/reference/tile_download.md)
+- [`tile_download()`](https://igorpawelec.github.io/geopl/reference/tile_download.md)
   fetches what survives your filtering;
-  [`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md)
+  [`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md)
   joins the tiles, cropping and masking to the area on request.
 
 ### Ready-made rasters: the GUGiK coverages
 
-- [`dem_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md)
+- [`dem_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md)
   and
-  [`ortho_get()`](https://igorpawelec.github.io/rgeopl/reference/dem_get.md)
+  [`ortho_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md)
   return the current model clipped to the area, with no tiles to mosaic.
   ASCII grids are converted to GeoTIFF by default, which is lossless and
   about a quarter of the size.
-- [`chm_get()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md)
+- [`chm_get()`](https://igorpawelec.github.io/geopl/reference/chm_get.md)
   and
-  [`chm_build()`](https://igorpawelec.github.io/rgeopl/reference/chm_get.md)
+  [`chm_build()`](https://igorpawelec.github.io/geopl/reference/chm_get.md)
   produce a canopy height model, refusing to subtract two rasters that
   are not on the same grid.
-- [`open_raster()`](https://igorpawelec.github.io/rgeopl/reference/open_raster.md)
+- [`open_raster()`](https://igorpawelec.github.io/geopl/reference/open_raster.md)
   attaches the coordinate system that ASCII grids do not carry.
 
 ### Forest Data Bank
 
-- [`bdl_directorates()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md),
-  [`bdl_inspectorates()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md),
-  [`bdl_ranges()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md),
-  [`bdl_subareas()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+- [`bdl_directorates()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md),
+  [`bdl_inspectorates()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md),
+  [`bdl_ranges()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md),
+  [`bdl_subareas()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   and
-  [`bdl_compartments()`](https://igorpawelec.github.io/rgeopl/reference/bdl_directorates.md)
+  [`bdl_compartments()`](https://igorpawelec.github.io/geopl/reference/bdl_directorates.md)
   return the State Forests hierarchy for an area. Compartments are not
   published as vectors and are derived from the forest address.
-- [`bdl_unit()`](https://igorpawelec.github.io/rgeopl/reference/bdl_unit.md)
+- [`bdl_unit()`](https://igorpawelec.github.io/geopl/reference/bdl_unit.md)
   finds a unit by name, ignoring case and Polish diacritics;
-  [`bdl_by_address()`](https://igorpawelec.github.io/rgeopl/reference/bdl_by_address.md)
+  [`bdl_by_address()`](https://igorpawelec.github.io/geopl/reference/bdl_by_address.md)
   finds one by forest address at any depth, from a regional directorate
   down to a single subarea.
-- [`bdl_catalogue()`](https://igorpawelec.github.io/rgeopl/reference/bdl_catalogue.md)
+- [`bdl_catalogue()`](https://igorpawelec.github.io/geopl/reference/bdl_catalogue.md)
   and
-  [`bdl_overview()`](https://igorpawelec.github.io/rgeopl/reference/bdl_overview.md)
+  [`bdl_overview()`](https://igorpawelec.github.io/geopl/reference/bdl_overview.md)
   list the whole country: 17 regional directorates, 429 forest
   inspectorates, 5259 forest ranges.
-- [`parse_forest_address()`](https://igorpawelec.github.io/rgeopl/reference/parse_forest_address.md)
+- [`parse_forest_address()`](https://igorpawelec.github.io/geopl/reference/parse_forest_address.md)
   splits the address into its seven fields.
 
 ### Administrative boundaries
 
-- [`prg_boundaries()`](https://igorpawelec.github.io/rgeopl/reference/prg_boundaries.md)
+- [`prg_boundaries()`](https://igorpawelec.github.io/geopl/reference/prg_boundaries.md)
   returns boundaries from the State Register of Borders for an area,
   filtered by the service rather than downloaded nationally and clipped.
   Nine levels, from the state border down to cadastral districts, plus
@@ -530,10 +530,10 @@ everything cached.
 - Index responses expire on a time-to-live; downloads are kept
   permanently and recorded, so a tile already on disk is never fetched
   twice.
-  [`cache_dir()`](https://igorpawelec.github.io/rgeopl/reference/cache_dir.md),
-  [`cache_info()`](https://igorpawelec.github.io/rgeopl/reference/cache_info.md)
+  [`cache_dir()`](https://igorpawelec.github.io/geopl/reference/cache_dir.md),
+  [`cache_info()`](https://igorpawelec.github.io/geopl/reference/cache_info.md)
   and
-  [`cache_clear()`](https://igorpawelec.github.io/rgeopl/reference/cache_info.md)
+  [`cache_clear()`](https://igorpawelec.github.io/geopl/reference/cache_info.md)
   manage it.
 - Progress bars for index assembly, multi-file downloads and single
   large files. `options(rgeopl.progress = FALSE)` turns them off.

@@ -49,7 +49,7 @@ table(dem$product, dem$year)
 #>   PointCloud    0    0    0    0    0    0
 ```
 
-[`coverage()`](https://igorpawelec.github.io/rgeopl/reference/coverage.md)
+[`coverage()`](https://igorpawelec.github.io/geopl/reference/coverage.md)
 answers the next question — whether a vintage actually covers the area
 or merely touches it.
 
@@ -67,7 +67,7 @@ coverage(subset(dem, product == "DTM"), by = "year", aoi = aoi)
 
 ## Joining tiles
 
-[`tile_mosaic()`](https://igorpawelec.github.io/rgeopl/reference/tile_mosaic.md)
+[`tile_mosaic()`](https://igorpawelec.github.io/geopl/reference/tile_mosaic.md)
 downloads what the selection points at and joins it. `crop` cuts to the
 area’s bounding box, `mask` to its outline.
 
@@ -121,7 +121,7 @@ tile_mosaic(subset(dem, product == "DTM"), aoi, quiet = TRUE)
 A canopy model is one survey’s surface minus its own terrain. Not every
 vintage has both — the terrain is remapped far more often than the
 surface — so
-[`chm_years()`](https://igorpawelec.github.io/rgeopl/reference/chm_years.md)
+[`chm_years()`](https://igorpawelec.github.io/geopl/reference/chm_years.md)
 is the question to ask first.
 
 ``` r
@@ -168,7 +168,7 @@ same radiometric result cut two ways: measured on one sheet, CIR’s red
 and green correlate with RGB’s at 0.999, while its first band correlates
 with nothing in RGB. So blue is the only band RGB actually adds.
 
-[`ortho_pairs()`](https://igorpawelec.github.io/rgeopl/reference/ortho_pairs.md)
+[`ortho_pairs()`](https://igorpawelec.github.io/geopl/reference/ortho_pairs.md)
 lists the flights that published both.
 
 ``` r
@@ -229,7 +229,7 @@ table(clouds$year, clouds$format)
 #>   2024   0   2
 ```
 
-[`pointcloud_get()`](https://igorpawelec.github.io/rgeopl/reference/pointcloud_get.md)
+[`pointcloud_get()`](https://igorpawelec.github.io/geopl/reference/pointcloud_get.md)
 fetches the tiles and returns them with the coordinate system the
 archive says they are in, one line short of a catalogue:
 
