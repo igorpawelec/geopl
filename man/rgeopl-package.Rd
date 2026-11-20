@@ -13,9 +13,9 @@ Search and download spatial data from the Polish national geodetic resource (GUG
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/igorpawelec/rgeopl}
-  \item \url{https://igorpawelec.github.io/rgeopl/}
-  \item Report bugs at \url{https://github.com/igorpawelec/rgeopl/issues}
+  \item \url{https://github.com/igorpawelec/geopl}
+  \item \url{https://igorpawelec.github.io/geopl/}
+  \item Report bugs at \url{https://github.com/igorpawelec/geopl/issues}
 }
 
 }

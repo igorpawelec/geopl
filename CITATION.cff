@@ -8,7 +8,7 @@ authors:
     affiliation: "University of Agriculture in Kraków, Poland"
     email: igor.pawelec@urk.edu.pl
     orcid: "https://orcid.org/0009-0005-9798-3596"
-repository-code: "https://github.com/igorpawelec/rgeopl"
+repository-code: "https://github.com/igorpawelec/geopl"
 license: MIT
 version: "0.10.0"
 date-released: "2026-09-21"
