@@ -1,4 +1,4 @@
-# rgeopl <img src="man/figures/logo.png" align="right" height="139" alt="rgeopl logo: three stacked map layers under an irregular area of interest crossing a grid of map sheets" />
+# rgeopl <img src="man/figures/logo.png" align="right" height="139" alt="geopl mark: an irregular area of interest lying across a grid of map sheets" />
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/igorpawelec/geopl/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/igorpawelec/geopl/actions/workflows/R-CMD-check.yaml)
