@@ -4,9 +4,9 @@ Unified access to Polish national geodata: the geodetic resource held by
 GUGiK (PZGiK / ISOK) and the Forest Data Bank (BDL) run by Lasy
 Panstwowe. One area of interest, one cache, one set of verbs.
 
-**Version 0.1.0.** Both the GUGiK and the Forest Data Bank sides are
-working; see [NEWS.md](https://igorpawelec.github.io/geopl/NEWS.md) for
-what is in it and for the service quirks that shaped it.
+Both the GUGiK and the Forest Data Bank sides are working; see
+[NEWS.md](https://igorpawelec.github.io/geopl/NEWS.md) for what each
+version brought and for the service quirks that shaped it.
 
 ## Installation
 
@@ -31,6 +31,8 @@ rather just read them, the rendered copies are in
 [`docs/`](https://igorpawelec.github.io/geopl/docs/).
 
 ``` r
+
+library(rgeopl)
 
 aoi <- as_aoi(c(16.80, 52.44), buffer = 3000)   # a point and a radius, or any sf object
 
@@ -66,13 +68,15 @@ sf::st_filter(st, sf::st_union(sf::st_geometry(subset(idx, year == max(year)))))
 
 ## Documentation
 
-Three vignettes, each run against the live services and precompiled, so
+Five vignettes, each run against the live services and precompiled, so
 the numbers and figures in them are real rather than illustrative:
 
 |  |  |
 |----|----|
 | [Getting started](https://igorpawelec.github.io/geopl/docs/getting-started.md) | areas of interest, the indexes, coverage, downloading, the record limit |
 | [Forest data: the BDL side](https://igorpawelec.github.io/geopl/docs/forest-data.md) | the hierarchy, the forest address, lookups, national listings, and why an address is not a polygon |
+| [Rasters end to end](https://igorpawelec.github.io/geopl/docs/raster-chain.md) | one sheet in several forms, joining tiles, canopy height, four bands from two products, writing it out |
+| [Heights](https://igorpawelec.github.io/geopl/docs/heights.md) | the two height systems Poland measures in, why `st_transform()` does not convert between them, and when it matters |
 | [Case study](https://igorpawelec.github.io/geopl/docs/case-study.md) | Bircza and Metkow: deciding whether a canopy height model is possible at all |
 
 The `docs/` copies are the ones to read on GitHub; the same content
@@ -108,7 +112,7 @@ nationally and clipped:
 
 ``` r
 
-prg_boundaries(aoi, "commune")   # three communes, not the country's 2479
+prg_boundaries(aoi, "commune")   # the communes under the area, not the country's 2479
 ```
 
 ![PRG at two scales](reference/figures/prg-context.png)
@@ -257,7 +261,7 @@ Two things that shape the client:
     cache_dir()         meta/  index responses, time-to-live, expire on their own
                         files/ downloads, permanent, recorded in a manifest
 
-    gp_json/gp_xml      retries, timeouts, POST for long queries,
+    gp_json/gp_text     retries, timeouts, POST for long queries,
     gp_download()       classed errors, cache-aware
 
     arcgis_query()      count -> ids -> chunked POST   (GUGiK indexes)
@@ -276,8 +280,8 @@ Four rules the clients follow:
 
 ## Requirements
 
-R \>= 4.1, with `sf`, `httr2`, `jsonlite`, `rlang`, `cli` and `xml2`.
-`terra` is needed for the raster verbs –
+R \>= 4.1, with `sf`, `httr2`, `jsonlite`, `rlang` and `cli`. `terra` is
+needed for the raster verbs –
 [`dem_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md),
 [`ortho_get()`](https://igorpawelec.github.io/geopl/reference/dem_get.md),
 [`chm_get()`](https://igorpawelec.github.io/geopl/reference/chm_get.md),

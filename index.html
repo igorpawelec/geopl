@@ -72,7 +72,7 @@
 <!-- badges: start -->
 
 <p>Unified access to Polish national geodata: the geodetic resource held by GUGiK (PZGiK / ISOK) and the Forest Data Bank (BDL) run by Lasy Panstwowe. One area of interest, one cache, one set of verbs.</p>
-<p><strong>Version 0.1.0.</strong> Both the GUGiK and the Forest Data Bank sides are working; see <a href="NEWS.html">NEWS.md</a> for what is in it and for the service quirks that shaped it.</p>
+<p>Both the GUGiK and the Forest Data Bank sides are working; see <a href="NEWS.html">NEWS.md</a> for what each version brought and for the service quirks that shaped it.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -82,7 +82,9 @@
 <p><code>terra</code> is needed for the raster verbs – <code><a href="reference/dem_get.html">dem_get()</a></code>, <code><a href="reference/dem_get.html">ortho_get()</a></code>, <code><a href="reference/chm_get.html">chm_get()</a></code>, <code><a href="reference/tile_mosaic.html">tile_mosaic()</a></code>, <code><a href="reference/open_raster.html">open_raster()</a></code> – and only for those; the index, forest and boundary functions work without it.</p>
 <p>Vignettes are not built by default. They are precompiled, so <code>build_vignettes = TRUE</code> needs pandoc but no network; if you would rather just read them, the rendered copies are in <a href="docs/"><code>docs/</code></a>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aoi</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/as_aoi.html">as_aoi</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16.80</span>, <span class="fl">52.44</span><span class="op">)</span>, buffer <span class="op">=</span> <span class="fl">3000</span><span class="op">)</span>   <span class="co"># a point and a radius, or any sf object</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/igorpawelec/geopl" class="external-link">rgeopl</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">aoi</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/as_aoi.html">as_aoi</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16.80</span>, <span class="fl">52.44</span><span class="op">)</span>, buffer <span class="op">=</span> <span class="fl">3000</span><span class="op">)</span>   <span class="co"># a point and a radius, or any sf object</span></span>
 <span></span>
 <span><span class="va">idx</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dem_request.html">ortho_request</a></span><span class="op">(</span><span class="va">aoi</span><span class="op">)</span>     <span class="co"># what exists here, and from which years?</span></span>
 <span><span class="fu"><a href="reference/coverage.html">coverage</a></span><span class="op">(</span><span class="va">idx</span>, aoi <span class="op">=</span> <span class="va">aoi</span><span class="op">)</span>      <span class="co"># which vintages actually cover the whole area?</span></span>
@@ -108,7 +110,7 @@
 <div class="section level2">
 <h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
 </h2>
-<p>Three vignettes, each run against the live services and precompiled, so the numbers and figures in them are real rather than illustrative:</p>
+<p>Five vignettes, each run against the live services and precompiled, so the numbers and figures in them are real rather than illustrative:</p>
 <table class="table">
 <colgroup>
 <col width="50%">
@@ -122,6 +124,14 @@
 <tr>
 <td><a href="docs/forest-data.html">Forest data: the BDL side</a></td>
 <td>the hierarchy, the forest address, lookups, national listings, and why an address is not a polygon</td>
+</tr>
+<tr>
+<td><a href="docs/raster-chain.html">Rasters end to end</a></td>
+<td>one sheet in several forms, joining tiles, canopy height, four bands from two products, writing it out</td>
+</tr>
+<tr>
+<td><a href="docs/heights.html">Heights</a></td>
+<td>the two height systems Poland measures in, why <code>st_transform()</code> does not convert between them, and when it matters</td>
 </tr>
 <tr>
 <td><a href="docs/case-study.html">Case study</a></td>
@@ -144,7 +154,7 @@
 </div>
 <p>And administrative boundaries are filtered by the server, not downloaded nationally and clipped:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/prg_boundaries.html">prg_boundaries</a></span><span class="op">(</span><span class="va">aoi</span>, <span class="st">"commune"</span><span class="op">)</span>   <span class="co"># three communes, not the country's 2479</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/prg_boundaries.html">prg_boundaries</a></span><span class="op">(</span><span class="va">aoi</span>, <span class="st">"commune"</span><span class="op">)</span>   <span class="co"># the communes under the area, not the country's 2479</span></span></code></pre></div>
 <div class="float">
 <img src="reference/figures/prg-context.png" alt="PRG at two scales"><div class="figcaption">PRG at two scales</div>
 </div>
@@ -364,7 +374,7 @@
 cache_dir()         meta/  index responses, time-to-live, expire on their own
                     files/ downloads, permanent, recorded in a manifest
 
-gp_json/gp_xml      retries, timeouts, POST for long queries,
+gp_json/gp_text     retries, timeouts, POST for long queries,
 gp_download()       classed errors, cache-aware
 
 arcgis_query()      count -&gt; ids -&gt; chunked POST   (GUGiK indexes)
@@ -381,7 +391,7 @@ oapif_items()       bbox -&gt; pages by explicit offset (BDL collections)</code>
 <div class="section level2">
 <h2 id="requirements">Requirements<a class="anchor" aria-label="anchor" href="#requirements"></a>
 </h2>
-<p>R &gt;= 4.1, with <code>sf</code>, <code>httr2</code>, <code>jsonlite</code>, <code>rlang</code>, <code>cli</code> and <code>xml2</code>. <code>terra</code> is needed for the raster verbs – <code><a href="reference/dem_get.html">dem_get()</a></code>, <code><a href="reference/dem_get.html">ortho_get()</a></code>, <code><a href="reference/chm_get.html">chm_get()</a></code>, <code><a href="reference/tile_mosaic.html">tile_mosaic()</a></code>, <code><a href="reference/open_raster.html">open_raster()</a></code> – and only for those.</p>
+<p>R &gt;= 4.1, with <code>sf</code>, <code>httr2</code>, <code>jsonlite</code>, <code>rlang</code> and <code>cli</code>. <code>terra</code> is needed for the raster verbs – <code><a href="reference/dem_get.html">dem_get()</a></code>, <code><a href="reference/dem_get.html">ortho_get()</a></code>, <code><a href="reference/chm_get.html">chm_get()</a></code>, <code><a href="reference/tile_mosaic.html">tile_mosaic()</a></code>, <code><a href="reference/open_raster.html">open_raster()</a></code> – and only for those.</p>
 <p><strong>The GUGiK services refuse connections from outside Poland.</strong> BDL does not. Working on the GUGiK side from abroad needs a VPN endpoint in Poland; the error message says so when a request fails against those hosts.</p>
 </div>
 <div class="section level2">
