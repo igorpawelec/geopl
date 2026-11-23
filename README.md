@@ -10,8 +10,8 @@ Unified access to Polish national geodata: the geodetic resource held by GUGiK
 (PZGiK / ISOK) and the Forest Data Bank (BDL) run by Lasy Panstwowe. One area
 of interest, one cache, one set of verbs.
 
-**Version 0.1.0.** Both the GUGiK and the Forest Data Bank sides are
-working; see [NEWS.md](NEWS.md) for what is in it and for the service quirks
+Both the GUGiK and the Forest Data Bank sides are working; see
+[NEWS.md](NEWS.md) for what each version brought and for the service quirks
 that shaped it.
 
 ## Installation
@@ -30,6 +30,8 @@ Vignettes are not built by default. They are precompiled, so
 read them, the rendered copies are in [`docs/`](docs/).
 
 ```r
+library(rgeopl)
+
 aoi <- as_aoi(c(16.80, 52.44), buffer = 3000)   # a point and a radius, or any sf object
 
 idx <- ortho_request(aoi)     # what exists here, and from which years?
@@ -61,13 +63,15 @@ sf::st_filter(st, sf::st_union(sf::st_geometry(subset(idx, year == max(year)))))
 
 ## Documentation
 
-Three vignettes, each run against the live services and precompiled, so the
+Five vignettes, each run against the live services and precompiled, so the
 numbers and figures in them are real rather than illustrative:
 
 | | |
 |---|---|
 | [Getting started](docs/getting-started.md) | areas of interest, the indexes, coverage, downloading, the record limit |
 | [Forest data: the BDL side](docs/forest-data.md) | the hierarchy, the forest address, lookups, national listings, and why an address is not a polygon |
+| [Rasters end to end](docs/raster-chain.md) | one sheet in several forms, joining tiles, canopy height, four bands from two products, writing it out |
+| [Heights](docs/heights.md) | the two height systems Poland measures in, why `st_transform()` does not convert between them, and when it matters |
 | [Case study](docs/case-study.md) | Bircza and Metkow: deciding whether a canopy height model is possible at all |
 
 The `docs/` copies are the ones to read on GitHub; the same content installs as
@@ -96,7 +100,7 @@ And administrative boundaries are filtered by the server, not downloaded
 nationally and clipped:
 
 ```r
-prg_boundaries(aoi, "commune")   # three communes, not the country's 2479
+prg_boundaries(aoi, "commune")   # the communes under the area, not the country's 2479
 ```
 
 ![PRG at two scales](man/figures/prg-context.png)
@@ -234,7 +238,7 @@ as_aoi()            sf / sfc / terra / bbox / point / matrix / WKT / file
 cache_dir()         meta/  index responses, time-to-live, expire on their own
                     files/ downloads, permanent, recorded in a manifest
 
-gp_json/gp_xml      retries, timeouts, POST for long queries,
+gp_json/gp_text     retries, timeouts, POST for long queries,
 gp_download()       classed errors, cache-aware
 
 arcgis_query()      count -> ids -> chunked POST   (GUGiK indexes)
@@ -254,7 +258,7 @@ Four rules the clients follow:
 
 ## Requirements
 
-R >= 4.1, with `sf`, `httr2`, `jsonlite`, `rlang`, `cli` and `xml2`. `terra` is
+R >= 4.1, with `sf`, `httr2`, `jsonlite`, `rlang` and `cli`. `terra` is
 needed for the raster verbs -- `dem_get()`, `ortho_get()`, `chm_get()`,
 `tile_mosaic()`, `open_raster()` -- and only for those.
 
