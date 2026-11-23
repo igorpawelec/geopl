@@ -10,7 +10,6 @@
 ^site$
 ^pkgdown$
 ^logo$
-^LICENSE\.md$
 ^\.github$
 ^tests/testthat/fixtures$
 ^CITATION\.cff$
